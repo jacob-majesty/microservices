@@ -13,6 +13,7 @@ import com.majesty.accounts.repository.AccountsRepository;
 import com.majesty.accounts.repository.CustomerRepository;
 import com.majesty.accounts.service.IAccountsService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -20,12 +21,16 @@ import java.util.Optional;
 import java.util.Random;
 
 @Service
-@AllArgsConstructor
 public class AccountsServiceImpl  implements IAccountsService {
 
-    private AccountsRepository accountsRepository;
-    private CustomerRepository customerRepository;
+    private final AccountsRepository accountsRepository;
+    private final CustomerRepository customerRepository;
 
+    @Autowired
+    public AccountsServiceImpl(AccountsRepository accountsRepository, CustomerRepository customerRepository) {
+        this.accountsRepository = accountsRepository;
+        this.customerRepository = customerRepository;
+    }
     /**
      * @param customerDto - CustomerDto Object
      */
