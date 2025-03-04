@@ -1,5 +1,8 @@
 package com.majesty.loans.mapper;
 
+import com.majesty.loans.dto.LoansDto;
+import com.majesty.loans.entity.Loans;
+
 public class LoansMapper {
 
     public static LoansDto mapToLoansDto(Loans loans, LoansDto loansDto) {
