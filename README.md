@@ -9,7 +9,7 @@ Welcome to the repository for developing microservices using modern technologies
 4. [Getting Started](#getting-started)
    - [Prerequisites](#prerequisites)
    - [Installation](#installation)
-5. [Project Structure](#project-structure)
+5. [Documentation](#openapi)
 6. [Running the Microservices](#running-the-microservices)
    - [Local Development](#local-development)
    - [Docker](#docker)
@@ -17,7 +17,6 @@ Welcome to the repository for developing microservices using modern technologies
    - [Helm](#helm)
 7. [Microservices Security](#microservices-security)
 8. [Contributing](#contributing)
-9. [License](#license)
 
 ---
 
@@ -84,20 +83,13 @@ Before running the project, ensure you have the following installed:
 
 ---
 
-## Project Structure
+## Documentation
 
 ```
-your-repo-name/
-├── service-discovery/          # Service discovery (Eureka/Consul)
-├── api-gateway/                # API Gateway (Spring Cloud Gateway)
-├── config-server/              # Spring Cloud Config Server
-├── microservice-1/             # Example Microservice 1
-├── microservice-2/             # Example Microservice 2
-├── docker-compose.yml          # Docker Compose for local development
-├── kubernetes/                 # Kubernetes manifests
-├── helm/                       # Helm charts
-├── README.md                   # This file
-└── ...
+### OpenAPI Documentation
+Access the API documentation after running the application:
+- **Swagger UI**: `http://localhost:8080/swagger-ui.html`
+- **OpenAPI JSON**: `http://localhost:8080/v3/api-docs`
 ```
 
 ---
