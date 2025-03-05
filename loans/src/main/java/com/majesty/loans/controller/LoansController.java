@@ -20,13 +20,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-/**
- * @author Eazy Bytes
- */
 
 @Tag(
-        name = "CRUD REST APIs for Loans in EazyBank",
-        description = "CRUD REST APIs in EazyBank to CREATE, UPDATE, FETCH AND DELETE loan details"
+        name = "CRUD REST APIs for Loans in the Bank",
+        description = "CRUD REST APIs in the Bank to CREATE, UPDATE, FETCH AND DELETE loan details"
 )
 @RestController
 @RequestMapping(path = "/api", produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -38,7 +35,7 @@ public class LoansController {
 
     @Operation(
             summary = "Create Loan REST API",
-            description = "REST API to create new loan inside EazyBank"
+            description = "REST API to create new loan inside the Bank"
     )
     @ApiResponses({
             @ApiResponse(
