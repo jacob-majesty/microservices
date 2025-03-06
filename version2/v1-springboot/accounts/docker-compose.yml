@@ -1,0 +1,37 @@
+services:
+  accounts:
+    image: "jacobmajesty1/accounts:s1"
+    container_name: accounts-ms
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - bank
+  loans:
+    image: "jacobmajesty1/loans:s1"
+    container_name: loans-ms
+    ports:
+      - "8090:8090"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - bank
+  cards:
+    image: "jacobmajesty1/cards:s1"
+    container_name: cards-ms
+    ports:
+      - "9000:9000"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - bank
+networks:
+  bank:
+    driver: "bridge"
