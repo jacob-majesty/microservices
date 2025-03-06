@@ -11,6 +11,7 @@
 	<groupId>com.majesty</groupId>
 	<artifactId>cards</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>cards</name>
 	<description>Microservices for accounts</description>
 	<url/>
@@ -102,6 +103,18 @@
 					</excludes>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>3.4.2</version>
+				<configuration>
+					<to>
+						<image>jacobmajesty1/${project.artifactId}:s1</image>
+					</to>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 
