@@ -11,7 +11,7 @@ spring:
         # search-locations: "classpath:/config"
         # search-locations: "file:///Users//user_name//Documents//config"
         git:
-          uri: ""
+          uri: "https://github.com/jacob-majesty/bankms-config.git"
           default-label: main
           timeout: 5
           clone-on-start: true
