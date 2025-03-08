@@ -1,0 +1,12 @@
+
+build:
+  version: "1.0"
+
+accounts:
+  message: "Welcome to the Bank accounts related prod APIs "
+  contactDetails:
+    name: "Omar - Product Owner"
+    email: "omar@bank.com"
+  onCallSupport:
+    - (453) 392-4829
+    - (236) 203-0384
