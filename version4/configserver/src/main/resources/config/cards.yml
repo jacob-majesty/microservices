@@ -1,0 +1,12 @@
+
+build:
+  version: "3.0"
+
+cards:
+  message: "Welcome to the Bank cards related local APIs "
+  contactDetails:
+    name: "Lech - Developer"
+    email: "lech@bank.com"
+  onCallSupport:
+    - (412) 419-3491
+    - (915) 382-1932
