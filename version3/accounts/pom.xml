@@ -120,7 +120,7 @@
 				<version>3.4.2</version>
 				<configuration>
 					<to>
-						<image>jacobmajesty1/${project.artifactId}:s2</image>
+						<image>jacobmajesty1/${project.artifactId}:s3</image>
 					</to>
 				</configuration>
 			</plugin>
