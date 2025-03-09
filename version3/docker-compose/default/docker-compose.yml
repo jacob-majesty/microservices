@@ -96,5 +96,5 @@ services:
       service: microservice-configserver-config
 
 networks:
-  eazybank:
+  bank:
     driver: "bridge"
