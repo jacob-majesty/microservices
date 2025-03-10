@@ -31,5 +31,5 @@ info:
 logging:
   level:
     com:
-      jacobmajesty1:
+      majesty:
         gatewayserver: DEBUG

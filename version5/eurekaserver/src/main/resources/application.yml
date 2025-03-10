@@ -18,6 +18,3 @@ management:
     health:
       probes:
         enabled: true
-
-server:
-  port: 8070
