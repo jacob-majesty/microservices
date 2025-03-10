@@ -47,3 +47,9 @@ info:
     name: "accounts"
     description: "Bank Accounts Application"
     version: "1.0.0"
+
+logging:
+  level:
+    com:
+      majesty:
+        accounts: DEBUG
