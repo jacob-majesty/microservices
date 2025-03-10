@@ -16,25 +16,26 @@ public class GatewayserverApplication {
 	}
 
 	@Bean
-	public RouteLocator BankRouteConfig(RouteLocatorBuilder routeLocatorBuilder) {
+	public RouteLocator eazyBankRouteConfig(RouteLocatorBuilder routeLocatorBuilder) {
 		return routeLocatorBuilder.routes()
 				.route(p -> p
-						.path("/bank/accounts/**")
-						.filters( f -> f.rewritePath("/bank/accounts/(?<segment>.*)","/${segment}")
+						.path("/eazybank/accounts/**")
+						.filters( f -> f.rewritePath("/eazybank/accounts/(?<segment>.*)","/${segment}")
 								.addResponseHeader("X-Response-Time", LocalDateTime.now().toString()))
 						.uri("lb://ACCOUNTS"))
 				.route(p -> p
-						.path("/bank/loans/**")
-						.filters( f -> f.rewritePath("/bank/loans/(?<segment>.*)","/${segment}")
+						.path("/eazybank/loans/**")
+						.filters( f -> f.rewritePath("/eazybank/loans/(?<segment>.*)","/${segment}")
 								.addResponseHeader("X-Response-Time", LocalDateTime.now().toString()))
 						.uri("lb://LOANS"))
 				.route(p -> p
-						.path("/bank/cards/**")
-						.filters( f -> f.rewritePath("/bank/cards/(?<segment>.*)","/${segment}")
+						.path("/eazybank/cards/**")
+						.filters( f -> f.rewritePath("/eazybank/cards/(?<segment>.*)","/${segment}")
 								.addResponseHeader("X-Response-Time", LocalDateTime.now().toString()))
 						.uri("lb://CARDS")).build();
 
 
 	}
+
 
 }
