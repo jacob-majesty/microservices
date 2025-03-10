@@ -126,7 +126,7 @@
 				<version>3.4.2</version>
 				<configuration>
 					<to>
-						<image>jacobmajesty1/${project.artifactId}:s4</image>
+						<image>jacobmajesty1/${project.artifactId}:s5</image>
 					</to>
 				</configuration>
 			</plugin>
