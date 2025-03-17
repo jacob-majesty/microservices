@@ -14,10 +14,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -37,20 +35,19 @@ import org.springframework.web.bind.annotation.*;
 public class CardsController {
 
     private static final Logger logger = LoggerFactory.getLogger(CardsController.class);
-    private ICardsService iCardsService;
+    private final ICardsService iCardsService;
+    private final Environment environment;
+    private final CardsContactInfoDto cardsContactInfoDto;
 
-    public CardsController(ICardsService iCardsService) {
+
+    public CardsController(ICardsService iCardsService, Environment environment, CardsContactInfoDto cardsContactInfoDto) {
         this.iCardsService = iCardsService;
+        this.environment = environment;
+        this.cardsContactInfoDto = cardsContactInfoDto;
     }
 
     @Value("${build.version}")
     private String buildVersion;
-
-    @Autowired
-    private Environment environment;
-
-    @Autowired
-    private CardsContactInfoDto cardsContactInfoDto;
 
     @Operation(
             summary = "Create Card REST API",

@@ -28,8 +28,8 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Tag(
-        name = "CRUD REST APIs for Loans in the Bank",
-        description = "CRUD REST APIs in the Bank to CREATE, UPDATE, FETCH AND DELETE loan details"
+        name = "CRUD REST APIs for Loans in Bank",
+        description = "CRUD REST APIs in Bank to CREATE, UPDATE, FETCH AND DELETE loan details"
 )
 @RestController
 @RequestMapping(path = "/api", produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -37,6 +37,7 @@ import org.springframework.web.bind.annotation.*;
 public class LoansController {
 
     private static final Logger logger = LoggerFactory.getLogger(LoansController.class);
+
     private ILoansService iLoansService;
 
     public LoansController(ILoansService iLoansService) {
