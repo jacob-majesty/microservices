@@ -1,0 +1,12 @@
+
+build:
+  version: "2.0"
+
+accounts:
+  message: "Welcome to the Bank accounts related QA APIs "
+  contactDetails:
+    name: "Xi - QA Lead"
+    email: "xi@bank.com"
+  onCallSupport:
+    - (222) 265-3765
+    - (222) 734-8371
