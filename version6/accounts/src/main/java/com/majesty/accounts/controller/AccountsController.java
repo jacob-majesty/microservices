@@ -6,6 +6,7 @@ import com.majesty.accounts.dto.CustomerDto;
 import com.majesty.accounts.dto.ErrorResponseDto;
 import com.majesty.accounts.dto.ResponseDto;
 import com.majesty.accounts.service.IAccountsService;
+import io.github.resilience4j.retry.annotation.Retry;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -14,6 +15,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -31,6 +34,7 @@ import org.springframework.core.env.Environment;
 public class AccountsController {
 
         private final IAccountsService iAccountsService;
+        private static final Logger logger = LoggerFactory.getLogger(AccountsController.class);
 
         public AccountsController(IAccountsService iAccountsService) {
                 this.iAccountsService = iAccountsService;
@@ -120,11 +124,20 @@ public class AccountsController {
                         @ApiResponse(responseCode = "200", description = "HTTP Status OK"),
                         @ApiResponse(responseCode = "500", description = "HTTP Status Internal Server Error", content = @Content(schema = @Schema(implementation = ErrorResponseDto.class)))
         })
+        @Retry(name = "getBuildInfo",fallbackMethod = "getBuildInfoFallback")
         @GetMapping("/build-info")
         public ResponseEntity<String> getBuildInfo() {
+                logger.debug("getBuildInfo() method Invoked");
                 return ResponseEntity
-                                .status(HttpStatus.OK)
-                                .body(buildVersion);
+                        .status(HttpStatus.OK)
+                        .body(buildVersion);
+        }
+
+        public ResponseEntity<String> getBuildInfoFallback(Throwable throwable) {
+                logger.debug("getBuildInfoFallback() method Invoked");
+                return ResponseEntity
+                        .status(HttpStatus.OK)
+                        .body("0.9");
         }
 
         @Operation(summary = "Get Java version", description = "Get Java versions details that is installed into accounts microservice")
