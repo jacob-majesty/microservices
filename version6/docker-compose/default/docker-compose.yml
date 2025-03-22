@@ -1,6 +1,18 @@
 services:
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: [ "CMD-SHELL", "redis-cli ping | grep PONG" ]
+      timeout: 10s
+      retries: 10
+    extends:
+      file: common-config.yml
+      service: network-deploy-service
+
   configserver:
-    image: "jacobmajesty1/configserver:s5"
+    image: "jacobmajesty1/configserver:s6"
     container_name: configserver-ms
     ports:
       - "8071:8071"
@@ -15,7 +27,7 @@ services:
       service: microservice-base-config
 
   eurekaserver:
-    image: "jacobmajesty1/eurekaserver:s5"
+    image: "jacobmajesty1/eurekaserver:s6"
     container_name: eurekaserver-ms
     ports:
       - "8070:8070"
@@ -35,7 +47,7 @@ services:
       SPRING_APPLICATION_NAME: "eurekaserver"
 
   accounts:
-    image: "jacobmajesty1/accounts:s5"
+    image: "jacobmajesty1/accounts:s6"
     container_name: accounts-ms
     ports:
       - "8080:8080"
@@ -57,7 +69,7 @@ services:
       service: microservice-eureka-config
 
   loans:
-    image: "jacobmajesty1/loans:s5"
+    image: "jacobmajesty1/loans:s6"
     container_name: loans-ms
     ports:
       - "8090:8090"
@@ -79,7 +91,7 @@ services:
       service: microservice-eureka-config
 
   cards:
-    image: "jacobmajesty1/cards:s5"
+    image: "jacobmajesty1/cards:s6"
     container_name: cards-ms
     ports:
       - "9000:9000"
@@ -101,7 +113,7 @@ services:
       service: microservice-eureka-config
 
   gatewayserver:
-    image: "jacobmajesty1/gatewayserver:s5"
+    image: "jacobmajesty1/gatewayserver:s6"
     container_name: gatewayserver-ms
     ports:
       - "8072:8072"
@@ -112,8 +124,15 @@ services:
         condition: service_healthy
       cards:
         condition: service_healthy
+      redis:
+        condition: service_healthy
+
     environment:
       SPRING_APPLICATION_NAME: "gatewayserver"
+      SPRING_DATA_REDIS_CONNECT-TIMEOUT: 2s
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+      SPRING_DATA_REDIS_TIMEOUT: 1s
     extends:
       file: common-config.yml
       service: microservice-eureka-config
