@@ -1,0 +1,12 @@
+
+build:
+  version: "3.0"
+
+accounts:
+  message: "Welcome to the bank accounts related local APIs "
+  contactDetails:
+    name: "Jacob Majesty - Developer"
+    email: "majesty@bank.com"
+  onCallSupport:
+    - (555) 555-1234
+    - (555) 523-1345
